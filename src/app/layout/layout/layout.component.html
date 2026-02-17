@@ -1,0 +1,34 @@
+<div class="header-div row-div">
+  <nav>
+    <ul class="menu">
+      <li><a routerLink="/app/cv" routerLinkActive="active-link">CV</a></li>
+
+      <li class="dropdown">
+        <span>Internships</span>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/app/internships/available" routerLinkActive="active-link">Available</a></li>
+          <li><a routerLink="/app/internships/reommendations" routerLinkActive="active-link">Recommendations</a></li>
+          <li><a routerLink="/app/internships/my-internships" routerLinkActive="active-link">My internships</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <span>Worklog</span>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/app/work-entry/my-worklog" routerLinkActive="active-link">My Worklog</a></li>
+          <li>
+            <a routerLink="/app/work-entry/create-worklog" routerLinkActive="active-link">Create Worklog</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div>
+    <button class="logout-button" (click)="logout()">Log out</button>
+  </div>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

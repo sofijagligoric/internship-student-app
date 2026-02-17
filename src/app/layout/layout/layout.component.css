@@ -1,0 +1,67 @@
+.header-div {
+    background-color: #051642;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #051642;
+  list-style: none;
+  color: white;
+  padding: 0;
+  width: 200px;
+  padding-top: 10px;
+}
+
+.dropdown-menu li:hover {
+    background: #0a2261;
+}
+
+.dropdown-menu li {
+    min-height: 30px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.content {
+  padding: 20px;
+}
+
+.logout-button{
+    color: white;
+    background: #051642;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.logout-button:hover {
+    background: #0a2261;
+}
+
+.menu a {
+  text-decoration: none;
+  color: inherit; 
+  cursor: pointer; 
+}

@@ -27,7 +27,7 @@ export class LoginComponent {
    this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
         this.authService.setActiveUser(response);
-        this.router.navigate(['/cv']);
+        this.router.navigate(['/app'], { replaceUrl: true });
       }, 
       error: () => {
         alert("Wrong username or password.");

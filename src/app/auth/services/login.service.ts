@@ -29,8 +29,8 @@ export class LoginService {
   localStorage.setItem('activeUser', JSON.stringify(user));
 }
 
-  isLoggedIn(): boolean {
-  return localStorage.getItem('userId') !== null;
+isLoggedIn(): boolean {
+  return localStorage.getItem('activeUser') !== null;
 }
 
   logout() {
