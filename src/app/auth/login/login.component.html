@@ -1,0 +1,33 @@
+<div class="main-div">
+  <div class="login-container row-div">
+    <div class="login-left">
+      <img src="assets/background1.jpg" alt="Background" />
+    </div>
+    <div class="login-right column-div">
+      <h1 class="login-title">Login</h1>
+      <form class="login-form column-div" [formGroup]="loginForm" (ngSubmit)="login()" >
+        <input
+          type="text"
+          formControlName="username"
+          required
+          autocomplete="new-username"
+          placeholder="Username"
+        />
+        <input
+          type="password"
+          formControlName="password"
+          required
+           autocomplete="new-password"
+          placeholder="Password"
+        />
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="button-primary"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

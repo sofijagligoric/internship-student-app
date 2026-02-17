@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.row-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+input {
+  height: 35px;
+  width: 100%;
+  text-indent: 5px;
+  font-size: 14px;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #bdb6f0;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #bdb6f0;
+}
+
+button {
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+}
+
+.button-primary {
+  background-color: #051642;
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: #162c66;
+}
+
+.button-primary:disabled {
+  background-color: #8296a8;
+  color: #c3cfd9;
+}
