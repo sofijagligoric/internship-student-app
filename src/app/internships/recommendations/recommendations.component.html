@@ -1,1 +1,70 @@
-<p>recommendations works!</p>
+<div class="recommendations-container">
+  <div class="row-div recomm-header">
+    <h2 class="title-h2">AI Recommended Internships</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search by technology..."
+        [(ngModel)]="searchTerm"
+        (input)="applyFilter()"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="center">Loading recommendations...</div>
+
+  <div *ngIf="noCv && !loading" class="center">
+    <h3>We could not find your CV.</h3>
+    <p>
+      You can do it on following link:
+      <a routerLink="app/cv/create">Create CV</a>
+    </p>
+  </div>
+
+  <div
+    *ngIf="allRecommendations.length > 0 && !loading"
+    class="cards-container"
+  >
+    <div
+      class="recommendation-card column-div"
+      *ngFor="let rec of filteredRecommendations"
+    >
+    <div>
+      <h3>{{ rec.internshipName }}</h3>
+      <p><strong>About:</strong> {{ rec.about }}</p>
+      <p><strong>Requirements:</strong> {{ rec.requirements }}</p>
+      <p><strong>Skills:</strong> {{ rec.skills }}</p>
+      <p><strong>Technologies:</strong> {{ rec.technologies }}</p>
+      <p><strong>Score:</strong> {{ rec.score }}</p>
+      <p><strong>Reason?</strong></p>
+      <p>{{ rec.reason }}</p>
+      </div>
+      <div class="apply-div"> <button class="apply-btn" (click)="openModal(rec)">Apply</button> </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="allRecommendations.length === 0 && !noCv && !loading"
+    class="center"
+  >
+    No recommendations available.
+  </div>
+
+  <div class="modal-overlay" *ngIf="selectedInternship">
+    <div class="modal">
+      <p>
+        Are you sure you want to send application to
+        {{ selectedInternship.internshipName }}?
+      </p>
+
+      <div class="modal-actions">
+        <button class="confirm-btn" (click)="sendApplication()">
+          Send application
+        </button>
+
+        <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

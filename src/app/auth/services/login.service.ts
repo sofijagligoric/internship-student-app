@@ -6,37 +6,42 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  private baseUrl = 'http://localhost:8080/api/auth';
+  public signedIn: boolean = false;
+  private activeUser: LoginResponse | null = null;
 
-   private baseUrl = 'http://localhost:8080/api/auth';
-   public signedIn: boolean = false;
-   public activeUser: LoginResponse|null = null;
-
-  constructor(private http: HttpClient, private router : Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
+  }
 
   login(request: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(
-      `${this.baseUrl}/login`,
-      request
-    );
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, request);
   }
 
   setActiveUser(user: LoginResponse) {
-  this.activeUser = user;
-  this.signedIn = true;
-  localStorage.setItem('activeUser', JSON.stringify(user));
-}
+    this.activeUser = user;
+    this.signedIn = true;
+    localStorage.setItem('activeUser', JSON.stringify(user));
+  }
 
-isLoggedIn(): boolean {
-  return localStorage.getItem('activeUser') !== null;
-}
+  isLoggedIn(): boolean {
+    return localStorage.getItem('activeUser') !== null;
+  }
 
   logout() {
     localStorage.clear();
     this.activeUser = null;
     this.signedIn = false;
     this.router.navigate(['/']);
+  }
+
+  getActiveUser(): LoginResponse | null {
+    const storedUser = localStorage.getItem('activeUser');
+    return storedUser ? JSON.parse(storedUser) : null;
   }
 }
