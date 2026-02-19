@@ -1,0 +1,36 @@
+.new-cv-main-div {
+    display: flex;
+  justify-content: center;
+  padding: 30px;
+  background: #f5f7fa;
+}
+
+.new-cv-card{
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+
+.submit-button{
+    width: 200px;
+    align-self: flex-end;
+    margin-top: 15px;
+}
+
+.cv-form{
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cv-form input {
+    max-width: 90% !important;
+}
+
+.image-preview img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #051642;
+}

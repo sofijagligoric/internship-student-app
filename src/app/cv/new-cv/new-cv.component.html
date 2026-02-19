@@ -1,0 +1,33 @@
+<div class="new-cv-main-div">
+  <div class="new-cv-card">
+    <form [formGroup]="cvForm" class="column-div cv-form">
+      <input *ngIf="!imagePreview" type="file" (change)="onFileSelected($event)" />
+
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" />
+        <br />
+
+        <button type="button" (click)="removeCurrentImage()">
+          Remove Image
+        </button>
+      </div>
+      <input type="text" formControlName="firstName" />
+      <input type="text" formControlName="lastName" />
+      <input type="text" formControlName="contact" />
+      <input type="text" formControlName="description" />
+      <input type="text" formControlName="school" />
+      <input type="text" formControlName="internships" />
+      <input type="text" formControlName="experience" />
+      <input type="text" formControlName="skills" />
+      <input type="text" formControlName="interests" />
+      <input type="text" formControlName="training" />
+      <button
+        class="button-primary submit-button"
+        [disabled]="cvForm.invalid"
+        (click)="createCv()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

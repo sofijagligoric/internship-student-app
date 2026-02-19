@@ -18,6 +18,11 @@
   position: relative;
 }
 
+.menu > li:hover
+{
+  color: #4b68b3;
+}
+
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -46,7 +51,6 @@
 }
 
 .content {
-  padding: 20px;
 }
 
 .logout-button{
@@ -65,3 +69,5 @@
   color: inherit; 
   cursor: pointer; 
 }
+
+

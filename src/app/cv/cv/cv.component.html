@@ -1,1 +1,77 @@
-<p>cv works!</p>
+<div class="cv-wrapper" *ngIf="cv">
+  <div class="cv-actions">
+    <button
+      class="button-primary"
+      routerLink="/app/cv/new"
+      routerLinkActive="active-link"
+      style="width: 100px"
+    >
+      Edit
+    </button>
+    <button
+      class="button-primary"
+      (click)="openModal()"
+      style="width: 100px; background-color: #a8281d"
+    >
+      Delete
+    </button>
+  </div>
+  <div class="cv-card">
+    <div class="cv-header">
+      <div class="cv-image" *ngIf="cv.imagePath">
+        <img [src]="getImageUrl()" alt="Profile photo" />
+      </div>
+      <div class="cv-header-info">
+        <h1>{{ cv.firstName }} {{ cv.lastName }}</h1>
+        <p class="cv-contact">Contact: {{ cv.contact }}</p>
+        <p class="cv-description">{{ cv.description }}</p>
+      </div>
+    </div>
+    <div class="cv-body">
+      <div class="cv-left">
+        <h3>Education</h3>
+        <p>{{ cv.school }}</p>
+
+        <h3>Skills</h3>
+        <p>{{ cv.skills }}</p>
+
+        <h3>Interests</h3>
+        <p>{{ cv.interests }}</p>
+      </div>
+
+      <div class="cv-right">
+        <h3>Internships</h3>
+        <p>{{ cv.internships }}</p>
+
+        <h3>Experience</h3>
+        <p>{{ cv.experience }}</p>
+
+        <h3>Training</h3>
+        <p>{{ cv.training }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="noCv" class="no-cv">
+  <!-- Create CV &nbsp;<a routerLink="app/cv/new"> here</a>... -->
+    <button
+      class="confirm-btn"
+      routerLink="/app/cv/new"
+      routerLinkActive="active-link"
+      style="width: 150px"
+    >
+      Create CV
+    </button>
+</div>
+<div class="modal-overlay" *ngIf="deleteModalVisible">
+  <div class="modal">
+    <p>Are you sure you want to delete cv?</p>
+
+    <div class="modal-actions">
+      <button class="confirm-btn" (click)="deleteCv()">Confirm</button>
+
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
