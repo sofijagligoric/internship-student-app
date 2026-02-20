@@ -1,7 +1,12 @@
 <div class="new-cv-main-div">
   <div class="new-cv-card">
     <form [formGroup]="cvForm" class="column-div cv-form">
-      <input *ngIf="!imagePreview" type="file" (change)="onFileSelected($event)" />
+      <input
+        *ngIf="!imagePreview"
+        type="file"
+        (change)="onFileSelected($event)" class="add-file-input"
+        style="padding: 15px;"
+      />
 
       <div *ngIf="imagePreview" class="image-preview">
         <img [src]="imagePreview" />
@@ -11,16 +16,47 @@
           Remove Image
         </button>
       </div>
-      <input type="text" formControlName="firstName" />
-      <input type="text" formControlName="lastName" />
-      <input type="text" formControlName="contact" />
-      <input type="text" formControlName="description" />
-      <input type="text" formControlName="school" />
-      <input type="text" formControlName="internships" />
-      <input type="text" formControlName="experience" />
-      <input type="text" formControlName="skills" />
-      <input type="text" formControlName="interests" />
-      <input type="text" formControlName="training" />
+      <div class="column-div create-cv-input-div">
+        <label for="firstName">First name: </label>
+        <input type="text" formControlName="firstName" />
+      </div>
+
+      <div class="column-div create-cv-input-div">
+        <label for="lastName">Last name: </label>
+        <input type="text" formControlName="lastName" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="contact">Contact: </label>
+        <input type="text" formControlName="contact" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="description">Description: </label>
+        <input type="text" formControlName="description" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="school">School: </label>
+        <input type="text" formControlName="school" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="internships">Internships: </label>
+        <input type="text" formControlName="internships" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="experience">Experience: </label>
+        <input type="text" formControlName="experience" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="skills">Skills: </label>
+        <input type="text" formControlName="skills" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="interests">Interests: </label>
+        <input type="text" formControlName="interests" />
+      </div>
+      <div class="column-div create-cv-input-div">
+        <label for="training">Training: </label>
+        <input type="text" formControlName="training" />
+      </div>
       <button
         class="button-primary submit-button"
         [disabled]="cvForm.invalid"

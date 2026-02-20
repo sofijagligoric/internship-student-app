@@ -1,0 +1,62 @@
+.available-main-div {
+   padding: 20px;
+}
+
+.internships-container {
+   width: 100%;
+}
+
+.center {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.available-header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.title-h2 {
+  color: #051642;
+  margin-block-start: 10px;
+  font-size: 1.5rem;
+}
+
+.apply-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  .apply-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.int-pag {
+  margin-top: 20px;
+  justify-content: center;
+}

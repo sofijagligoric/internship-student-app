@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AvailableInternshipsComponent } from './available-internships/available-internships.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { MyInternshipsComponent } from './my-internships/my-internships.component';
+import { ViewInternshipComponent } from './view-internship/view-internship.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
     path: 'my-internships', 
     component: MyInternshipsComponent
+  },
+  {
+    path: 'view/:id', 
+    component: ViewInternshipComponent
   }
 ];
 

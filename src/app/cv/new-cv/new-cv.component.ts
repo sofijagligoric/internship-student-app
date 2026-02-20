@@ -3,6 +3,7 @@ import { CvService } from '../services/cv.service';
 import { Cv } from '../../models/Cv';
 import { LoginService } from '../../auth/services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-cv',
@@ -14,6 +15,7 @@ export class NewCvComponent implements OnInit {
     private cvService: CvService,
     private loginService: LoginService,
     private fb: FormBuilder,
+    private router: Router,
   ) {}
 
   public cv: Cv | null = null;
@@ -85,30 +87,34 @@ export class NewCvComponent implements OnInit {
 
   createCv() {
     if (this.cvForm.invalid) return;
-
     const user = this.loginService.getActiveUser();
     if (!user) return;
-
     const cvData: Cv = {
       ...this.cvForm.value,
       studentId: user.userId,
     };
 
+    if (this.removeImage) {
+      cvData.imagePath = '';
+    }
+
     if (this.cv) {
       this.cvService
-        .update(this.cv.id!, cvData, this.selectedImage!)
+        .update(this.cv.id!, cvData, this.selectedImage ?? undefined)
         .subscribe({
           next: (res) => {
             alert('CV updated successfully!');
             this.cv = res;
+            this.router.navigate(['/app/cv']);
           },
           error: () => alert('Error updating CV'),
         });
     } else {
-      this.cvService.create(cvData, this.selectedImage!).subscribe({
+      this.cvService.create(cvData, this.selectedImage ?? undefined).subscribe({
         next: (res) => {
           alert('CV created successfully!');
           this.cv = res;
+          this.router.navigate(['/app/cv']);
         },
         error: () => alert('Error creating CV'),
       });

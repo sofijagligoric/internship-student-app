@@ -21,8 +21,14 @@
 
 .recommendation-card h3 {
   margin-block-start: 10px;
-  margin-block-end: 20px;
+  margin-block-end: 10px;
   color: #051642;
+}
+
+.recommendation-card h4 {
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+  color: #4b68b3;
 }
 .center {
   text-align: center;

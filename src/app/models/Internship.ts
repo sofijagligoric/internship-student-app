@@ -1,5 +1,5 @@
 export interface InternshipDTO {
-  id?: number; 
+  id: number; 
   name: string;
   startDate: string;  
   endDate: string;

@@ -1,1 +1,95 @@
-<p>available-internships works!</p>
+<div class="available-main-div column-div">
+  <div class="row-div available-header">
+    <h2 class="title-h2">Available Internships</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search by technology or skill..."
+        [(ngModel)]="searchTerm"
+        (input)="applyFilter()"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="allInternships.length > 0" class="internships-container">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Technologies</th>
+            <th>Skills</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rec of paginatedInternships">
+            <td>{{ rec.name }}</td>
+            <td>{{ getCompanyName(rec.companyId) }}</td>
+            <td>{{ rec.startDate }}</td>
+            <td>{{ rec.endDate }}</td>
+            <td>{{ rec.technologies }}</td>
+            <td>{{ rec.skills }}</td>
+            <td>
+              <div class="apply-div">
+                <button
+                  class="apply-btn"
+                  (click)="openModal(rec)"
+                  style="margin-top: 0"
+                >
+                  Apply
+                </button>
+                <button
+                  class="confirm-btn"
+                  [routerLink]="['/app/internships/view', rec.id]"
+                >
+                  View
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination int-pag">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+
+      <span>Page {{ currentPage }}</span>
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage * pageSize >= filteredInternships.length"
+      >
+        Next
+      </button>
+    </div>
+
+    <div *ngIf="filteredInternships.length === 0" class="center">
+      No internships available.
+    </div>
+
+    <div class="modal-overlay" *ngIf="selectedInternship">
+      <div class="modal">
+        <p>
+          Are you sure you want to send application to
+          {{ selectedInternship.name }}?
+        </p>
+
+        <div class="modal-actions">
+          <button class="confirm-btn" (click)="sendApplication()">
+            Send application
+          </button>
+
+          <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

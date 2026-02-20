@@ -1,0 +1,56 @@
+<div class="view-int-main" *ngIf="internship">
+  <div class="apply-div">
+    <button class="apply-btn" (click)="openModal()" style="width: 200px;">Apply to internship</button>
+  </div>
+  <div class="internship-card">
+    <div class="card-header">
+      <div>
+        <h2>{{ internship.name }}</h2>
+        <h4 class="company-name">{{ company?.name }}</h4>
+      </div>
+      <div class="date-badge">
+        Start: {{ internship.startDate }}, end: {{ internship.endDate }}
+      </div>
+    </div>
+    <div class="section">
+      <h3>About the Internship</h3>
+      <p>{{ internship.about }}</p>
+    </div>
+    <div class="section">
+      <h3>Requirements</h3>
+      <p>{{ internship.requirements }}</p>
+    </div>
+    <div class="section">
+      <h3>Skills</h3>
+      <p>{{ internship.skills }}</p>
+    </div>
+    <div class="section">
+      <h3>Technologies</h3>
+      <div class="tech-container">
+        <span
+          class="tech-badge"
+          *ngFor="let tech of internship.technologies?.split(',')"
+        >
+          {{ tech.trim() }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="modalOpen">
+    <div class="modal">
+      <p>
+        Are you sure you want to send application to
+        {{ internship.name }}?
+      </p>
+
+      <div class="modal-actions">
+        <button class="confirm-btn" (click)="sendApplication()">
+          Send application
+        </button>
+
+        <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

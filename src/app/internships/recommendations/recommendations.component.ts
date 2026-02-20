@@ -46,7 +46,7 @@ export class RecommendationsComponent implements OnInit {
 
   applyFilter() {
     this.filteredRecommendations = this.allRecommendations.filter((r) =>
-      r.technologies.toLowerCase().includes(this.searchTerm.toLowerCase()),
+      r.technologies.toLowerCase().includes(this.searchTerm.toLowerCase()) || r.skills.toLowerCase().includes(this.searchTerm.toLowerCase()),
     );
   }
 

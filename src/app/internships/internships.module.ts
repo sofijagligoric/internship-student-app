@@ -6,13 +6,15 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { AvailableInternshipsComponent } from './available-internships/available-internships.component';
 import { MyInternshipsComponent } from './my-internships/my-internships.component';
 import { FormsModule } from '@angular/forms';
+import { ViewInternshipComponent } from './view-internship/view-internship.component';
 
 
 @NgModule({
   declarations: [
     RecommendationsComponent,
     AvailableInternshipsComponent,
-    MyInternshipsComponent
+    MyInternshipsComponent,
+    ViewInternshipComponent
   ],
   imports: [
     CommonModule,

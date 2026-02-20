@@ -5,6 +5,7 @@ export interface Recommendation {
   technologies: string;
   skills: string;
   requirements: string;
+  company: string;
   score: number;
   reason: string;
 }

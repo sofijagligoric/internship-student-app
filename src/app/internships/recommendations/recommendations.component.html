@@ -5,7 +5,7 @@
     <div class="search-box">
       <input
         type="text"
-        placeholder="Search by technology..."
+        placeholder="Search by technology or skill..."
         [(ngModel)]="searchTerm"
         (input)="applyFilter()"
       />
@@ -18,7 +18,7 @@
     <h3>We could not find your CV.</h3>
     <p>
       You can do it on following link:
-      <a routerLink="app/cv/new">Create CV</a>
+      <a routerLink="/app/cv/new">Create CV</a>
     </p>
   </div>
 
@@ -32,6 +32,7 @@
     >
     <div>
       <h3>{{ rec.internshipName }}</h3>
+      <h4> {{ rec.company }}</h4>
       <p><strong>About:</strong> {{ rec.about }}</p>
       <p><strong>Requirements:</strong> {{ rec.requirements }}</p>
       <p><strong>Skills:</strong> {{ rec.skills }}</p>
@@ -45,7 +46,7 @@
   </div>
 
   <div
-    *ngIf="allRecommendations.length === 0 && !noCv && !loading"
+    *ngIf="filteredRecommendations.length === 0 && !noCv && !loading"
     class="center"
   >
     No recommendations available.

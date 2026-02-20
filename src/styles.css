@@ -44,6 +44,7 @@ button {
 .button-primary {
   background-color: #051642;
   color: white;
+    cursor: pointer;
 }
 
 .button-primary:hover {
@@ -59,12 +60,12 @@ button {
   padding: 8px;
   width: 250px;
   border-radius: 20px;
-  border: 1px solid #bdb6f0;
+  border: 1px solid #a39ae6;
 }
 
 .search-box input:focus {
   outline: none;
-  border: 2px solid #bdb6f0;
+  border: 2px solid #a39ae6;
 }
 
 .apply-btn {
@@ -111,11 +112,59 @@ button {
   border: none;
   padding: 8px 15px;
   color: white;
+    cursor: pointer;
 }
 
 .cancel-btn {
   background: #051642;
   border: none;
   padding: 8px 15px;
+  cursor: pointer;
   color: white;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #051642;
+  width: 100%;
+  overflow-x: auto;
+}
+
+td {
+   border: 1px solid #051642;
+   text-indent: 10px;
+}
+
+th {
+   border: 1px solid #051642;
+   padding: 5px;
+}
+
+tr:hover {
+  background-color:#d2ddfa;
+}
+
+thead{
+  background-color: #96b0f2;
+}
+
+thead:hover > tr{
+  background-color: #96b0f2;
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination button {
+  width: 70px;
+  height: 40px;
+  background: #051642;
+  color: white;
+}
+
+.pagination button:disabled {
+  background: #545d76;
 }
