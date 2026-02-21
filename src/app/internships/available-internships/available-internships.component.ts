@@ -24,6 +24,7 @@ export class AvailableInternshipsComponent implements OnInit {
   public companies: Company[] = [];
   searchTerm: string = '';
   selectedInternship: InternshipDTO | null = null;
+   selectedCompanyId: number | null = null;
   currentPage: number = 1;
   pageSize: number = 10;
 
@@ -49,14 +50,32 @@ export class AvailableInternshipsComponent implements OnInit {
     const company = this.companies.find((c) => c.id === companyId);
     return company ? company.name : 'Unknown';
   }
-
+/* 
   applyFilter() {
     this.filteredInternships = this.allInternships.filter((r) =>
       r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
      r.skills?.toLowerCase().includes(this.searchTerm.toLowerCase()),
     );
     this.currentPage = 1;
-  }
+  } */
+
+  applyFilter() {
+  this.filteredInternships = this.allInternships.filter(r => {
+
+    const matchesInternship =
+      !this.selectedCompanyId ||
+      r.companyId === this.selectedCompanyId;
+
+    const matchesSearch =
+      !this.searchTerm ||
+       r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+     r.skills?.toLowerCase().includes(this.searchTerm.toLowerCase());
+
+    return matchesInternship && matchesSearch;
+  });
+
+  this.currentPage = 1;
+}
 
   openModal(rec: InternshipDTO) {
     this.selectedInternship = rec;

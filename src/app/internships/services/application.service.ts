@@ -1,19 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Application } from '../../models/Application';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApplicationService {
-
-
   private baseUrl = 'http://localhost:8080/api/application';
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   apply(internshipId: number, studentId: number) {
-  return this.http.post(this.baseUrl, {
-    internshipId,
-    studentId
-  });
-}
+    return this.http.post(this.baseUrl, {
+      internshipId,
+      studentId,
+    });
+  }
+
+  getByStudent(id: number): Observable<Application[]> {
+    return this.http.get<Application[]>(`${this.baseUrl}/student/${id}`);
+  }
+
+  getByStudentAndStatus(
+    studentId: number,
+    status: string,
+  ): Observable<Application[]> {
+    return this.http.get<Application[]>(`${this.baseUrl}/student/status`, {
+      params: {
+        studentId: studentId,
+        status: status,
+      },
+    });
+  }
 }

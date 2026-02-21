@@ -1,1 +1,35 @@
-<p>create-worklog works!</p>
+<form [formGroup]="form1" (ngSubmit)="submit()">
+
+  <!-- Internship select -->
+  <div>
+    <label>Internship</label>
+    <select formControlName="internshipId" (change)="onInternshipChange()">
+      <option value="">Select internship</option>
+      <option *ngFor="let i of acceptedInternships" [value]="i.id">
+        {{ i.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Week start date -->
+  <div>
+    <label>Week start</label>
+    <input
+      type="date"
+      formControlName="weekStart"
+      [min]="minDate"
+      [max]="maxDate"
+    />
+  </div>
+
+  <!-- Activity -->
+  <div>
+    <label>Activity</label>
+    <textarea formControlName="activity"></textarea>
+  </div>
+
+  <button type="submit" [disabled]="form1.invalid">
+    Create Work Entry
+  </button>
+
+</form>

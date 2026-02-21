@@ -1,5 +1,5 @@
 .available-main-div {
-   padding: 20px;
+   padding: 40px;
 }
 
 .internships-container {
@@ -43,6 +43,16 @@ table {
   min-width: 900px;
   border-collapse: collapse;
 }
+.filter-div{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.filter-div select{
+  max-width: 200px;
+  height: 40px;
+}
 
 @media (max-width: 768px) {
   table {
@@ -54,6 +64,13 @@ table {
     flex-direction: column;
     gap: 5px;
   }
+  .filter-div select{
+  max-width: none;
+}
+
+.available-main-div {
+   padding: 20px;
+}
 }
 
 .int-pag {

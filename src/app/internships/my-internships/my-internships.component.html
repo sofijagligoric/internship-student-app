@@ -1,1 +1,63 @@
-<p>my-internships works!</p>
+<div class="applications-main-div column-div">
+  <div class="row-div available-header">
+    <h2 class="title-h2">My applications</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search by internship..."
+        [(ngModel)]="searchTerm"
+        (input)="applyFilter()"
+      />
+    </div>
+  </div>
+
+  <div class="filter-div">
+    <select [(ngModel)]="selectedStatus" (change)="applyFilter()">
+    <option [ngValue]="null">All statuses</option>
+    <option [ngValue]="'accepted'">Accepted</option>
+    <option [ngValue]="'pending'">Pending</option>
+    <option [ngValue]="'declined'">Declined</option>
+  </select>
+  </div>
+
+  <div *ngIf="filteredApplications.length > 0" class="applications-container">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Internship</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rec of paginatedApplications">
+            <td>{{ getInternshipName(rec.internshipId) }}</td>
+            <td>{{ rec.date }}</td>
+            <td>{{ rec.status }}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination int-pag">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+
+      <span>Page {{ currentPage }}</span>
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage * pageSize >= filteredApplications.length"
+      >
+        Next
+      </button>
+    </div>
+
+    <div *ngIf="filteredApplications.length === 0" class="center">
+      No applications available.
+    </div>
+    </div>

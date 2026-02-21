@@ -55,14 +55,15 @@
 
 <div *ngIf="noCv" class="no-cv">
   <!-- Create CV &nbsp;<a routerLink="app/cv/new"> here</a>... -->
-   <h2>Create your CV and start searching for opportunities! </h2>    <button
-      class="confirm-btn"
-      routerLink="/app/cv/new"
-      routerLinkActive="active-link"
-      style="width: 150px"
-    >
-      Create CV
-    </button>
+  <h2>Create your CV and start searching for opportunities!</h2>
+  <button
+    class="confirm-btn"
+    routerLink="/app/cv/new"
+    routerLinkActive="active-link"
+    style="width: 150px"
+  >
+    Create CV
+  </button>
 </div>
 <div class="modal-overlay" *ngIf="deleteModalVisible">
   <div class="modal">

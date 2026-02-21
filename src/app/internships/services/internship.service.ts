@@ -15,6 +15,10 @@ export class InternshipService {
     return this.http.get<InternshipDTO[]>(`${this.baseUrl}/available`);
    }
 
+    getAll() : Observable<InternshipDTO[]> {
+    return this.http.get<InternshipDTO[]>(this.baseUrl);
+   }
+
   getById(id: number): Observable<InternshipDTO> {
       return this.http.get<InternshipDTO>(`${this.baseUrl}/${id}`);
     }

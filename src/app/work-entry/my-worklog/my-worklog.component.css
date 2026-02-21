@@ -1,0 +1,108 @@
+.main-we-div {
+  padding: 40px;
+}
+
+.my-work-header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.title-h2 {
+  color: #051642;
+  margin-block-start: 10px;
+  font-size: 1.5rem;
+}
+
+.header-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.header-actions select{
+  max-width: 200px;
+  height: 40px;
+}
+
+.we-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.we-card {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #dedaf2; /*#dedaf2*/
+  justify-content: space-between;
+}
+
+.we-card p {
+  margin-block-start: 2px;
+  margin-block-end: 3px;
+}
+
+.we-card h3 {
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+  color: #051642;
+}
+
+.we-card h4,
+h5 {
+  margin-block-start: 0;
+  margin-block-end: 5px;
+  color: #4b68b3;
+}
+.center {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.delete-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+  .my-work-header {
+    justify-content: center;
+  }
+
+  .title-h2 {
+    color: #051642;
+    margin-block-start: 10px;
+    font-size: 1.2rem;
+  }
+
+  .main-we-div {
+    padding: 20px;
+  }
+
+  .delete-div {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .delete-div button {
+    margin-bottom: 0;
+    align-self: flex-end;
+  }
+
+  .header-actions select{
+  max-width: none;
+}
+}

@@ -1,1 +1,87 @@
-<p>my-worklog works!</p>
+<div class="main-we-div column-div">
+  <div class="row-div my-work-header">
+    <h2 class="title-h2">My work entries</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search by entry date..."
+        [(ngModel)]="searchTerm"
+        (input)="applyFilter()"
+      />
+    </div>
+  </div>
+  <div class="header-actions">
+    <select [(ngModel)]="selectedInternshipId" (change)="applyFilter()">
+      <option [ngValue]="null">All internships</option>
+
+      <option *ngFor="let internship of internships" [ngValue]="internship.id">
+        {{ internship.name }}
+      </option>
+    </select>
+    <button
+      class="button-primary"
+      routerLink="/app/work-entry/create-worklog"
+      routerLinkActive="active-link"
+      style="width: 100px"
+    >
+      Add entry
+    </button>
+  </div>
+
+  <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
+    <div class="we-card column-div" *ngFor="let rec of filteredEntries">
+      <div>
+        <div class="delete-div">
+          <h3>{{ getInternshipName(rec.internshipId) }}</h3>
+
+          <button
+            class="apply-btn"
+            (click)="openModal(rec)"
+            style="background-color: #c42a1f"
+          >
+            Delete
+          </button>
+        </div>
+        <h5>Date: {{ rec.weekStart }}</h5>
+        <p>{{ rec.activity }}</p>
+      </div>
+    </div>
+    <div class="pagination int-pag">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+
+      <span>Page {{ currentPage }}</span>
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage * pageSize >= filteredEntries.length"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="filteredEntries.length === 0" class="center">
+    No entries available.
+  </div>
+
+  <div class="modal-overlay" *ngIf="selectedWorentry">
+    <div class="modal">
+      <p>Are you sure you want to delete this work entry?</p>
+
+      <div class="modal-actions">
+        <button
+          class="confirm-btn"
+          (click)="deleteWE()"
+          style="background-color: #c42a1f"
+        >
+          Delete
+        </button>
+
+        <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 export interface Application {
   id?: number;
-  stauts: string;
+  status: string;
   date: string;
   internshipId: number;
   studentId: number;

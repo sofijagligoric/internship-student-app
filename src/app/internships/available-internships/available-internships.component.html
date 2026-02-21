@@ -12,6 +12,16 @@
     </div>
   </div>
 
+  <div class="filter-div">
+     <select [(ngModel)]="selectedCompanyId" (change)="applyFilter()">
+      <option [ngValue]="null">All companies</option>
+
+      <option *ngFor="let company of companies" [ngValue]="company.id">
+        {{ company.name }}
+      </option>
+    </select>
+  </div>
+
   <div *ngIf="allInternships.length > 0" class="internships-container">
     <div class="table-responsive">
       <table>
