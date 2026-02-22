@@ -1,31 +1,31 @@
 .new-cv-main-div {
-    display: flex;
+  display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 40px;
   background: #f5f7fa;
 }
 
-.new-cv-card{
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    padding: 30px;
+.new-cv-card {
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
 }
 
-.submit-button{
-    width: 200px;
-    align-self: flex-end;
-    margin-top: 15px;
+.submit-button {
+  width: 150px;
+  align-self: flex-end;
+  margin-top: 15px;
 }
 
-.cv-form{
-    align-items: flex-start;
-    justify-content: center;
-    gap: 15px;
-    padding: 30px;
+.cv-form {
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px;
 }
 
 .cv-form input {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .image-preview img {
@@ -36,16 +36,29 @@
   border: 2px solid #051642;
 }
 
-.create-cv-input-div{
-    gap: 5px;
-    width: 100%;
+.create-cv-input-div {
+  gap: 5px;
+  width: 100%;
 }
 
+.add-file-input {
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
 
-.add-file-input{
-    background-color: white;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
+@media (max-width: 750px) {
+  .cv-form {
+    padding: 0;
+  }
+
+  .submit-button {
+    align-self: center;
+  }
+
+  .new-cv-main-div {
+  padding: 10px;
+}
 }

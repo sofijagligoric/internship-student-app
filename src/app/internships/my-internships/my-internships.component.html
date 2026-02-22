@@ -1,5 +1,5 @@
 <div class="applications-main-div column-div">
-  <div class="row-div available-header">
+  <div class="row-div applications-header">
     <h2 class="title-h2">My applications</h2>
 
     <div class="search-box">
@@ -14,32 +14,34 @@
 
   <div class="filter-div">
     <select [(ngModel)]="selectedStatus" (change)="applyFilter()">
-    <option [ngValue]="null">All statuses</option>
-    <option [ngValue]="'accepted'">Accepted</option>
-    <option [ngValue]="'pending'">Pending</option>
-    <option [ngValue]="'declined'">Declined</option>
-  </select>
+      <option [ngValue]="null">All statuses</option>
+      <option [ngValue]="'accepted'">Accepted</option>
+      <option [ngValue]="'pending'">Pending</option>
+      <option [ngValue]="'declined'">Declined</option>
+    </select>
   </div>
 
-  <div *ngIf="filteredApplications.length > 0" class="applications-container">
+  <div class="applications-container">
     <div class="table-responsive">
       <table>
         <thead>
           <tr>
             <th>Internship</th>
-            <th>Date</th>
+            <th>Date applied</th>
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="filteredApplications.length > 0">
           <tr *ngFor="let rec of paginatedApplications">
             <td>{{ getInternshipName(rec.internshipId) }}</td>
             <td>{{ rec.date }}</td>
             <td>{{ rec.status }}</td>
-            
           </tr>
         </tbody>
       </table>
+      <div *ngIf="filteredApplications.length === 0" class="center">
+        No applications available.
+      </div>
     </div>
 
     <div class="pagination int-pag">
@@ -56,8 +58,5 @@
         Next
       </button>
     </div>
-
-    <div *ngIf="filteredApplications.length === 0" class="center">
-      No applications available.
-    </div>
-    </div>
+  </div>
+</div>

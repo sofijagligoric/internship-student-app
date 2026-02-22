@@ -22,10 +22,23 @@ export class NewCvComponent implements OnInit {
   public imagePreview: string | null = null;
   public removeImage: boolean = false;
   selectedImage: File | null = null;
+  public cvForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
     let user = this.loginService.getActiveUser();
     if (!user) return;
+    this.cvForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      contact: ['', [Validators.required]],
+      description: [''],
+      school: ['', Validators.required],
+      internships: [''],
+      experience: [''],
+      skills: ['', Validators.required],
+      interests: [''],
+      training: [''],
+    });
 
     this.cvService.getByStudent(user.userId).subscribe({
       next: (response) => {
@@ -51,19 +64,6 @@ export class NewCvComponent implements OnInit {
       },
     });
   }
-
-  public cvForm: FormGroup = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    contact: ['', [Validators.required]],
-    description: [''],
-    school: ['', Validators.required],
-    internships: [''],
-    experience: [''],
-    skills: ['', Validators.required],
-    interests: [''],
-    training: [''],
-  });
 
   onFileSelected(event: any) {
     const file = event.target.files[0];

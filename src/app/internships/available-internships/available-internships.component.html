@@ -13,7 +13,7 @@
   </div>
 
   <div class="filter-div">
-     <select [(ngModel)]="selectedCompanyId" (change)="applyFilter()">
+    <select [(ngModel)]="selectedCompanyId" (change)="applyFilter()">
       <option [ngValue]="null">All companies</option>
 
       <option *ngFor="let company of companies" [ngValue]="company.id">
@@ -22,7 +22,7 @@
     </select>
   </div>
 
-  <div *ngIf="allInternships.length > 0" class="internships-container">
+  <div class="internships-container">
     <div class="table-responsive">
       <table>
         <thead>
@@ -36,7 +36,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="allInternships.length > 0">
           <tr *ngFor="let rec of paginatedInternships">
             <td>{{ rec.name }}</td>
             <td>{{ getCompanyName(rec.companyId) }}</td>
@@ -46,24 +46,17 @@
             <td>{{ rec.skills }}</td>
             <td>
               <div class="apply-div">
-                <button
-                  class="apply-btn"
-                  (click)="openModal(rec)"
-                  style="margin-top: 0"
-                >
-                  Apply
-                </button>
-                <button
-                  class="confirm-btn"
-                  [routerLink]="['/app/internships/view', rec.id]"
-                >
-                  View
-                </button>
+                <button class="apply-btn" (click)="openModal(rec)" style="margin-top: 0" >Apply</button>
+                <a class="view-btn-link" [routerLink]="['/app/internships/view', rec.id]" target="_blank" style="text-indent: 0px;">View</a>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <div *ngIf="filteredInternships.length === 0" class="center">
+        No internships available.
+      </div>
     </div>
 
     <div class="pagination int-pag">
@@ -79,10 +72,6 @@
       >
         Next
       </button>
-    </div>
-
-    <div *ngIf="filteredInternships.length === 0" class="center">
-      No internships available.
     </div>
 
     <div class="modal-overlay" *ngIf="selectedInternship">

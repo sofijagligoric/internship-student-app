@@ -8,7 +8,8 @@
 
 .center {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .available-header {
@@ -30,8 +31,6 @@
   justify-content: center;
   width: 100%;
   gap: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .table-responsive {

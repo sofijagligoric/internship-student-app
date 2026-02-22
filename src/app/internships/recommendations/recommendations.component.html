@@ -30,18 +30,21 @@
       class="recommendation-card column-div"
       *ngFor="let rec of filteredRecommendations"
     >
-    <div>
-      <h3>{{ rec.internshipName }}</h3>
-      <h4> {{ rec.company }}</h4>
-      <p><strong>About:</strong> {{ rec.about }}</p>
-      <p><strong>Requirements:</strong> {{ rec.requirements }}</p>
-      <p><strong>Skills:</strong> {{ rec.skills }}</p>
-      <p><strong>Technologies:</strong> {{ rec.technologies }}</p>
-      <p><strong>Score:</strong> {{ rec.score }}</p>
-      <p><strong>Reason?</strong></p>
-      <p>{{ rec.reason }}</p>
+      <div>
+        <h3>{{ rec.internshipName }}</h3>
+        <h4>{{ rec.company }}</h4>
+        <p><strong>About:</strong> {{ rec.about }}</p>
+        <p><strong>Requirements:</strong> {{ rec.requirements }}</p>
+        <p><strong>Skills:</strong> {{ rec.skills }}</p>
+        <p><strong>Technologies:</strong> {{ rec.technologies }}</p>
+        <p><strong>Score:</strong> {{ rec.score }}</p>
+        <p><strong>Reason?</strong></p>
+        <p>{{ rec.reason }}</p>
       </div>
-      <div class="apply-div"> <button class="apply-btn" (click)="openModal(rec)">Apply</button> </div>
+      <div class="apply-div">
+        <a class="view-btn-link" [routerLink]="['/app/internships/view', rec.internshipId]" target="_blank" style="margin-top: 10px;">View</a>
+        <button class="apply-btn" (click)="openModal(rec)">Apply</button>
+      </div>
     </div>
   </div>
 

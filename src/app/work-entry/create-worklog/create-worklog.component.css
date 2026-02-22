@@ -1,0 +1,61 @@
+.create-worklog-main {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-we-card {
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.submit-button {
+  width: 150px;
+  align-self: flex-end;
+  margin-top: 15px;
+}
+
+.we-form {
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px;
+  width: 100%;
+}
+
+.we-form textarea {
+    min-height: 150px;
+}
+
+.create-we-input-div {
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.create-we-textarea-div {
+  gap: 5px;
+  width: 100%;
+}
+
+.submit-btn{
+     width: 150px;
+  align-self: flex-end;
+}
+
+
+@media (max-width: 750px) {
+  .we-form {
+    padding: 10px;
+  }
+
+  .submit-btn {
+    align-self: center;
+  }
+
+  .create-worklog-main {
+  padding: 20px;
+}
+}
