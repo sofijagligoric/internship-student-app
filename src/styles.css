@@ -227,3 +227,23 @@ div {
 .view-btn-link:hover {
   opacity: 0.8;
 }
+
+.success-snackbar {
+  --mdc-snackbar-container-color: #2e7d32 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: #bd4d4d !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+}
+
+p {
+  word-break: break-word;
+}
+
+.viewport {
+  height: 500px;
+  width: 100%;
+}
+html, body { height: 100%; }

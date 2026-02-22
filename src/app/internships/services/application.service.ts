@@ -10,13 +10,14 @@ export class ApplicationService {
   private baseUrl = 'http://localhost:8080/api/application';
   constructor(private http: HttpClient) {}
 
-  apply(internshipId: number, studentId: number) {
-    return this.http.post(this.baseUrl, {
-      internshipId,
-      studentId,
-    });
-  }
-
+ apply(internshipId: number, studentId: number) {
+  return this.http.post(this.baseUrl, null, {
+    params: {
+      studentId: studentId,
+      internshipId: internshipId,
+    },
+  });
+}
   getByStudent(id: number): Observable<Application[]> {
     return this.http.get<Application[]>(`${this.baseUrl}/student/${id}`);
   }

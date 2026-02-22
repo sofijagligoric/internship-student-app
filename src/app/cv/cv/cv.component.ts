@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CvService } from '../services/cv.service';
 import { Cv } from '../../models/Cv';
 import { LoginService } from '../../auth/services/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cv',
@@ -12,6 +13,7 @@ export class CvComponent implements OnInit {
   constructor(
     private cvService: CvService,
     private loginService: LoginService,
+    private snackBar: MatSnackBar,
   ) {}
 
   public cv: Cv | null = null;
@@ -40,27 +42,37 @@ export class CvComponent implements OnInit {
     return `http://localhost:8080/uploads/cvImages/${this.cv.imagePath}`;
   }
 
-   openModal() {
-      this.deleteModalVisible = true;
-    }
-  
-    closeModal() {
-      this.deleteModalVisible = false;
-    }
+  openModal() {
+    this.deleteModalVisible = true;
+  }
+
+  closeModal() {
+    this.deleteModalVisible = false;
+  }
 
   deleteCv() {
-  if (!this.cv || !this.cv.id) return;
-  this.cvService.delete(this.cv.id).subscribe({
-    next: () => {
-      alert("CV deleted successfully!");
+    if (!this.cv || !this.cv.id) return;
+    this.cvService.delete(this.cv.id).subscribe({
+      next: () => {
+        this.snackBar.open('CV deleted successfully!', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+        });
 
-      this.cv = null;
-      this.noCv = true;
-      this.deleteModalVisible = false;
-    },
-    error: () => {
-      alert("Error deleting CV.");
-    }
-  });
-}
+        this.cv = null;
+        this.noCv = true;
+        this.deleteModalVisible = false;
+      },
+      error: () => {
+        this.snackBar.open('Error deleting CV.', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
+      },
+    });
+  }
 }

@@ -4,6 +4,7 @@ import { Cv } from '../../models/Cv';
 import { LoginService } from '../../auth/services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-cv',
@@ -16,6 +17,7 @@ export class NewCvComponent implements OnInit {
     private loginService: LoginService,
     private fb: FormBuilder,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) {}
 
   public cv: Cv | null = null;
@@ -103,20 +105,42 @@ export class NewCvComponent implements OnInit {
         .update(this.cv.id!, cvData, this.selectedImage ?? undefined)
         .subscribe({
           next: (res) => {
-            alert('CV updated successfully!');
+            this.snackBar.open('CV updated successfully!', 'Close', {
+              duration: 3000,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['success-snackbar'],
+            });
             this.cv = res;
             this.router.navigate(['/app/cv']);
           },
-          error: () => alert('Error updating CV'),
+          error: () =>
+            this.snackBar.open('Error updating CV', 'Close', {
+              duration: 3000,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['error-snackbar'],
+            }),
         });
     } else {
       this.cvService.create(cvData, this.selectedImage ?? undefined).subscribe({
         next: (res) => {
-          alert('CV created successfully!');
+          this.snackBar.open('CV created successfully!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar'],
+          });
           this.cv = res;
           this.router.navigate(['/app/cv']);
         },
-        error: () => alert('Error creating CV'),
+        error: () =>
+          this.snackBar.open('Error creating CV', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+          }),
       });
     }
   }

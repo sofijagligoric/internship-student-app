@@ -5,6 +5,7 @@ import { ApplicationService } from '../services/application.service';
 import { LoginService } from '../../auth/services/login.service';
 import { Company } from '../../models/Company';
 import { CompanyService } from '../services/company.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-available-internships',
@@ -17,6 +18,7 @@ export class AvailableInternshipsComponent implements OnInit {
     private applicationService: ApplicationService,
     private loginService: LoginService,
     private companyService: CompanyService,
+    private snackBar: MatSnackBar,
   ) {}
 
   public allInternships: InternshipDTO[] = [];
@@ -24,7 +26,7 @@ export class AvailableInternshipsComponent implements OnInit {
   public companies: Company[] = [];
   searchTerm: string = '';
   selectedInternship: InternshipDTO | null = null;
-   selectedCompanyId: number | null = null;
+  selectedCompanyId: number | null = null;
   currentPage: number = 1;
   pageSize: number = 10;
 
@@ -50,7 +52,7 @@ export class AvailableInternshipsComponent implements OnInit {
     const company = this.companies.find((c) => c.id === companyId);
     return company ? company.name : 'Unknown';
   }
-/* 
+  /* 
   applyFilter() {
     this.filteredInternships = this.allInternships.filter((r) =>
       r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
@@ -60,22 +62,20 @@ export class AvailableInternshipsComponent implements OnInit {
   } */
 
   applyFilter() {
-  this.filteredInternships = this.allInternships.filter(r => {
+    this.filteredInternships = this.allInternships.filter((r) => {
+      const matchesInternship =
+        !this.selectedCompanyId || r.companyId === this.selectedCompanyId;
 
-    const matchesInternship =
-      !this.selectedCompanyId ||
-      r.companyId === this.selectedCompanyId;
+      const matchesSearch =
+        !this.searchTerm ||
+        r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        r.skills?.toLowerCase().includes(this.searchTerm.toLowerCase());
 
-    const matchesSearch =
-      !this.searchTerm ||
-       r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
-     r.skills?.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return matchesInternship && matchesSearch;
+    });
 
-    return matchesInternship && matchesSearch;
-  });
-
-  this.currentPage = 1;
-}
+    this.currentPage = 1;
+  }
 
   openModal(rec: InternshipDTO) {
     this.selectedInternship = rec;
@@ -93,11 +93,28 @@ export class AvailableInternshipsComponent implements OnInit {
       .apply(this.selectedInternship.id, user.userId)
       .subscribe({
         next: () => {
-          alert('Application successfully sent!');
+          this.snackBar.open('Application successfully sent.', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar'],
+          });
+
           this.closeModal();
         },
-        error: () => {
-          alert('Application failed.');
+        error: (error) => {
+          const message =
+            error?.error?.message ||
+            error?.error?.error ||
+            'Application failed.';
+
+          this.snackBar.open(message, 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+          });
+
           this.closeModal();
         },
       });

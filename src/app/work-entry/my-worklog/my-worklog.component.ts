@@ -6,6 +6,7 @@ import { InternshipService } from '../../internships/services/internship.service
 import { ApplicationService } from '../../internships/services/application.service';
 import { InternshipDTO } from '../../models/Internship';
 import { Application } from '../../models/Application';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-worklog',
@@ -18,6 +19,7 @@ export class MyWorklogComponent implements OnInit {
     private loginService: LoginService,
     private internshipService: InternshipService,
     private applicationService: ApplicationService,
+    private snackBar: MatSnackBar,
   ) {}
 
   workEntries: Workentry[] = [];
@@ -96,9 +98,21 @@ export class MyWorklogComponent implements OnInit {
 
         this.applyFilter();
         this.closeModal();
+
+        this.snackBar.open('Entry deleted.', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+        });
       },
       error: () => {
-        alert('Failed to delete.');
+        this.snackBar.open('Failed to delete.', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
         this.closeModal();
       },
     });

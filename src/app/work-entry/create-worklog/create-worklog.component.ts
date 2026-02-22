@@ -8,6 +8,7 @@ import { InternshipService } from '../../internships/services/internship.service
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs';
 import { Workentry } from '../../models/Workentry';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-worklog',
@@ -21,6 +22,7 @@ export class CreateWorklogComponent implements OnInit {
     private applicationService: ApplicationService,
     private internshipService: InternshipService,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {}
 
   applications: Application[] = [];
@@ -84,7 +86,12 @@ export class CreateWorklogComponent implements OnInit {
     };
     this.workentryService.create(workentry).subscribe({
       next: () => {
-        alert('Work entry created!');
+        this.snackBar.open('Work entry created!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar'],
+          });
         this.form1.reset({
           internshipId: null,
           weekStart: null,
@@ -93,10 +100,20 @@ export class CreateWorklogComponent implements OnInit {
       },
       error: (err) => {
         if (err.error?.message?.includes('already exists')) {
-          alert('Work log already exists for this week!');
+          this.snackBar.open('Work log already exists for this week!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+          });
           this.form1.get('weekStart')?.reset();
         } else {
-          alert(err.error?.message || 'Error creating work entry.');
+          this.snackBar.open('Error creating work entry.', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+          });
         }
       },
     });

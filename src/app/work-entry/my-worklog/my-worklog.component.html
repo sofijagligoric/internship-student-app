@@ -29,7 +29,7 @@
     </button>
   </div>
 
-  <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
+ <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
     <div class="we-card column-div" *ngFor="let rec of filteredEntries">
       <div>
         <div class="delete-div">
@@ -61,7 +61,34 @@
         Next
       </button>
     </div>
+  </div> 
+<!-- 
+  <cdk-virtual-scroll-viewport 
+  itemSize="200" 
+  class="viewport"
+>
+  <div 
+    class="we-card column-div" 
+    *cdkVirtualFor="let rec of filteredEntries"
+  >
+    <div>
+      <div class="delete-div">
+        <h3>{{ getInternshipName(rec.internshipId) }}</h3>
+
+        <button
+          class="apply-btn"
+          (click)="openModal(rec)"
+          style="background-color: #c42a1f"
+        >
+          Delete
+        </button>
+      </div>
+
+      <h5>Date: {{ rec.weekStart }}</h5>
+      <p>{{ rec.activity }}</p>
+    </div>
   </div>
+</cdk-virtual-scroll-viewport> -->
 
   <div *ngIf="filteredEntries.length === 0" class="center">
     No entries available.

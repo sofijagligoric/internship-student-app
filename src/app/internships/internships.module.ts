@@ -7,6 +7,7 @@ import { AvailableInternshipsComponent } from './available-internships/available
 import { MyInternshipsComponent } from './my-internships/my-internships.component';
 import { FormsModule } from '@angular/forms';
 import { ViewInternshipComponent } from './view-internship/view-internship.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ViewInternshipComponent } from './view-internship/view-internship.compo
   imports: [
     CommonModule,
     InternshipsRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ]
 })
 export class InternshipsModule { }

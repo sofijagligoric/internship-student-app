@@ -3,6 +3,7 @@ import { RecommendationService } from '../services/recommendation.service';
 import { LoginService } from '../../auth/services/login.service';
 import { Recommendation } from '../../models/Recommendation';
 import { ApplicationService } from '../services/application.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-recommendations',
@@ -14,6 +15,7 @@ export class RecommendationsComponent implements OnInit {
     private recService: RecommendationService,
     private loginService: LoginService,
     private applicationService: ApplicationService,
+    private snackBar: MatSnackBar,
   ) {}
 
   allRecommendations: Recommendation[] = [];
@@ -45,8 +47,10 @@ export class RecommendationsComponent implements OnInit {
   }
 
   applyFilter() {
-    this.filteredRecommendations = this.allRecommendations.filter((r) =>
-      r.technologies.toLowerCase().includes(this.searchTerm.toLowerCase()) || r.skills.toLowerCase().includes(this.searchTerm.toLowerCase()),
+    this.filteredRecommendations = this.allRecommendations.filter(
+      (r) =>
+        r.technologies.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        r.skills.toLowerCase().includes(this.searchTerm.toLowerCase()),
     );
   }
 
@@ -66,11 +70,28 @@ export class RecommendationsComponent implements OnInit {
       .apply(this.selectedInternship.internshipId, user.userId)
       .subscribe({
         next: () => {
-          alert('Application successfully sent!');
+          this.snackBar.open('Application successfully sent.', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar'],
+          });
+
           this.closeModal();
         },
-        error: () => {
-          alert('Application failed.');
+        error: (error) => {
+          const message =
+            error?.error?.message ||
+            error?.error?.error ||
+            'Application failed.';
+
+          this.snackBar.open(message, 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+          });
+
           this.closeModal();
         },
       });
