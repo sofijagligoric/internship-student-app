@@ -1,6 +1,8 @@
 <div class="view-int-main" *ngIf="internship">
   <div class="apply-div">
-    <button class="apply-btn" (click)="openModal()" style="width: 150px;">Apply to internship</button>
+    <button class="apply-btn" (click)="openModal()" style="width: 150px">
+      Apply to internship
+    </button>
   </div>
   <div class="internship-card">
     <div class="card-header">
@@ -9,7 +11,8 @@
         <h4 class="company-name">{{ company?.name }}</h4>
       </div>
       <div class="date-badge">
-        Start: {{ internship.startDate }}, end: {{ internship.endDate }}
+        Start: {{ internship.startDate | date: "dd.MM.yyyy" }}, end:
+        {{ internship.endDate | date: "dd.MM.yyyy" }}
       </div>
     </div>
     <div class="section">

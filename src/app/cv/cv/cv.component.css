@@ -1,11 +1,10 @@
-
 .cv-wrapper {
   display: flex;
   justify-content: center;
   padding: 40px;
   background: #f5f7fa;
   flex-direction: column;
-   flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .cv-card {
@@ -14,7 +13,7 @@
   background: white;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   align-self: center;
 }
 
@@ -56,7 +55,8 @@
   flex-wrap: wrap;
 }
 
-.cv-left, .cv-right {
+.cv-left,
+.cv-right {
   flex: 1;
 }
 
@@ -69,8 +69,8 @@ h3 {
 }
 
 p {
-    margin-block-start: 10px;
-    margin-block-end: 10px;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
 }
 
 .cv-actions {
@@ -90,25 +90,25 @@ p {
     flex-direction: column;
   }
 
- .cv-header-info h1{
-  font-size: 20px;
- }
+  .cv-header-info h1 {
+    font-size: 20px;
+  }
 
- .cv-wrapper{
-  padding: 20px;
- }
+  .cv-wrapper {
+    padding: 20px;
+  }
 
- .cv-body {
-  gap: 10px;
-  flex-direction: column;
- }
+  .cv-body {
+    gap: 10px;
+    flex-direction: column;
+  }
 
- .cv-image {
-  align-self: center;
- }
+  .cv-image {
+    align-self: center;
+  }
 }
 
-.no-cv{
+.no-cv {
   display: flex;
   flex-direction: column;
   align-items: center;

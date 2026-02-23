@@ -22,7 +22,7 @@ export class CreateWorklogComponent implements OnInit {
     private applicationService: ApplicationService,
     private internshipService: InternshipService,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   applications: Application[] = [];
@@ -87,34 +87,27 @@ export class CreateWorklogComponent implements OnInit {
     this.workentryService.create(workentry).subscribe({
       next: () => {
         this.snackBar.open('Work entry created!', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['success-snackbar'],
-          });
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+        });
         this.form1.reset({
           internshipId: null,
           weekStart: null,
           activity: '',
         });
       },
-      error: (err) => {
-        if (err.error?.message?.includes('already exists')) {
-          this.snackBar.open('Work log already exists for this week!', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['error-snackbar'],
-          });
-          this.form1.get('weekStart')?.reset();
-        } else {
-          this.snackBar.open('Error creating work entry.', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['error-snackbar'],
-          });
-        }
+      error: (error) => {
+        const message =
+          error?.error?.message || error?.error?.error || 'Application failed.';
+
+        this.snackBar.open(message, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
       },
     });
   }

@@ -7,16 +7,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
 
-  constructor( private fb: FormBuilder, private authService: LoginService, private router: Router,  private snackBar: MatSnackBar,) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: LoginService,
+    private router: Router,
+    private snackBar: MatSnackBar,
+  ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
@@ -25,20 +29,19 @@ export class LoginComponent {
       return;
     }
 
-   this.authService.login(this.loginForm.value).subscribe({
+    this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
         this.authService.setActiveUser(response);
         this.router.navigate(['/app'], { replaceUrl: true });
-      }, 
+      },
       error: () => {
         this.snackBar.open('Wrong username or password.', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['error-snackbar'],
-          });
-
-      }
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
+      },
     });
   }
 }

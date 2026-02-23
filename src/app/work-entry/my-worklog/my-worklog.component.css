@@ -4,7 +4,7 @@
 
 .my-work-header {
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   align-items: center;
   padding: 0 10px;
 }
@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.header-actions select{
+.header-actions select {
   max-width: 200px;
   height: 40px;
 }
@@ -33,7 +33,7 @@
 .we-cards-container {
   display: flex;
   flex-wrap: wrap;
- /* gap: 20px; */
+  /* gap: 20px; */
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -103,7 +103,7 @@ h5 {
     align-self: flex-end;
   }
 
-  .header-actions select{
-  max-width: none;
-}
+  .header-actions select {
+    max-width: none;
+  }
 }

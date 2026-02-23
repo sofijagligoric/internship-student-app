@@ -51,6 +51,8 @@ export class CvComponent implements OnInit {
   }
 
   deleteCv() {
+    console.log('CV koji brišem:', this.cv);
+    console.log('ID koji šaljem:', this.cv?.id);
     if (!this.cv || !this.cv.id) return;
     this.cvService.delete(this.cv.id).subscribe({
       next: () => {

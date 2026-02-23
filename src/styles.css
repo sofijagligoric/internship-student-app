@@ -97,12 +97,12 @@ button {
   color: white;
   cursor: pointer;
   border-radius: 20px;
+  min-width: 65px;
 }
 
 .apply-btn:hover {
   opacity: 0.8;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -166,8 +166,9 @@ table {
 
 td {
   border: 1px solid #051642;
-  text-indent: 5px;
-  padding: 8px;
+  padding: 10px;
+  min-width: 110px;
+  word-break: break-word;
 }
 
 th {
@@ -200,7 +201,7 @@ thead:hover > tr {
   color: white;
 }
 
-.pagination button:hover{
+.pagination button:hover {
   opacity: 0.8;
 }
 
@@ -222,6 +223,7 @@ div {
   cursor: pointer;
   border-radius: 20px;
   height: 40px;
+  min-width: 65px;
 }
 
 .view-btn-link:hover {
@@ -246,4 +248,25 @@ p {
   height: 500px;
   width: 100%;
 }
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
+
+.red-star {
+  color: #f03636;
+  margin: 0;
+  margin-right: 3px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-break: break-word;
+  word-wrap: break-word;
+}

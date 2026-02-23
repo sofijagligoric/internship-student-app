@@ -34,7 +34,7 @@
         <tbody *ngIf="filteredApplications.length > 0">
           <tr *ngFor="let rec of paginatedApplications">
             <td>{{ getInternshipName(rec.internshipId) }}</td>
-            <td>{{ rec.date }}</td>
+            <td>{{ rec.date | date: "dd.MM.yyyy" }}</td>
             <td>{{ rec.status }}</td>
           </tr>
         </tbody>

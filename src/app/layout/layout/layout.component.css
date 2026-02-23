@@ -1,8 +1,8 @@
 .header-div {
-    background-color: #051642;
-    color: white;
-    align-items: center;
-    justify-content: space-between;
+  background-color: #051642;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .menu {
@@ -18,9 +18,8 @@
   position: relative;
 }
 
-.menu > li:hover
-{
-  color: #4b68b3;
+.menu > li:hover {
+  color: #96a3c4;
 }
 
 .dropdown-menu {
@@ -37,15 +36,15 @@
 }
 
 .dropdown-menu li:hover {
-    background: #0a2261;
+  background: #0a2261;
 }
 
 .dropdown-menu li {
-    min-height: 30px;
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    font-size: 12px;
+  min-height: 30px;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 12px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -55,21 +54,19 @@
 .content {
 }
 
-.logout-button{
-    color: white;
-    background: #051642;
-    font-size: 14px;
-    margin-right: 20px;
+.logout-button {
+  color: white;
+  background: #051642;
+  font-size: 14px;
+  margin-right: 20px;
 }
 
 .logout-button:hover {
-    background: #0a2261;
+  background: #0a2261;
 }
 
 .menu a {
   text-decoration: none;
-  color: inherit; 
-  cursor: pointer; 
+  color: inherit;
+  cursor: pointer;
 }
-
-

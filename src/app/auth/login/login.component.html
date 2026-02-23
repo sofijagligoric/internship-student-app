@@ -5,7 +5,11 @@
     </div>
     <div class="login-right column-div">
       <h1 class="login-title">Login</h1>
-      <form class="login-form column-div" [formGroup]="loginForm" (ngSubmit)="login()" >
+      <form
+        class="login-form column-div"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+      >
         <input
           type="text"
           formControlName="username"
@@ -17,7 +21,7 @@
           type="password"
           formControlName="password"
           required
-           autocomplete="new-password"
+          autocomplete="new-password"
           placeholder="Password"
         />
         <button

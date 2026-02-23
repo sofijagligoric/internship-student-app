@@ -9,7 +9,7 @@
 }
 
 .view-int-main h2 {
-    color: #051642;
+  color: #051642;
 }
 
 .internship-card {
@@ -58,7 +58,7 @@
   color: #555;
   /*line-height: 1.6;*/
   margin-block-start: 5px;
-   margin-block-end: 5px;
+  margin-block-end: 5px;
 }
 
 .tech-container {
@@ -81,5 +81,4 @@
   justify-content: right;
   width: 100%;
   max-width: 850px;
-
 }

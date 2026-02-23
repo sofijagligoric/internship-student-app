@@ -1,8 +1,8 @@
 .create-worklog-main {
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .new-we-card {
@@ -26,7 +26,7 @@
 }
 
 .we-form textarea {
-    min-height: 150px;
+  min-height: 150px;
 }
 
 .create-we-input-div {
@@ -40,11 +40,10 @@
   width: 100%;
 }
 
-.submit-btn{
-     width: 150px;
+.submit-btn {
+  width: 150px;
   align-self: flex-end;
 }
-
 
 @media (max-width: 750px) {
   .we-form {
@@ -56,6 +55,6 @@
   }
 
   .create-worklog-main {
-  padding: 20px;
-}
+    padding: 20px;
+  }
 }

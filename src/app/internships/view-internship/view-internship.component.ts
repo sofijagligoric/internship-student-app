@@ -67,20 +67,18 @@ export class ViewInternshipComponent implements OnInit {
         this.closeModal();
       },
       error: (error) => {
-          const message =
-            error?.error?.message ||
-            error?.error?.error ||
-            'Application failed.';
+        const message =
+          error?.error?.message || error?.error?.error || 'Application failed.';
 
-          this.snackBar.open(message, 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['error-snackbar'],
-          });
+        this.snackBar.open(message, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar'],
+        });
 
-          this.closeModal();
-        },
-      });
+        this.closeModal();
+      },
+    });
   }
 }

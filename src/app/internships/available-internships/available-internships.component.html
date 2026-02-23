@@ -40,14 +40,26 @@
           <tr *ngFor="let rec of paginatedInternships">
             <td>{{ rec.name }}</td>
             <td>{{ getCompanyName(rec.companyId) }}</td>
-            <td>{{ rec.startDate }}</td>
-            <td>{{ rec.endDate }}</td>
+            <td>{{ rec.startDate | date: "dd.MM.yyyy" }}</td>
+            <td>{{ rec.endDate | date: "dd.MM.yyyy" }}</td>
             <td>{{ rec.technologies }}</td>
             <td>{{ rec.skills }}</td>
             <td>
               <div class="apply-div">
-                <button class="apply-btn" (click)="openModal(rec)" style="margin-top: 0" >Apply</button>
-                <a class="view-btn-link" [routerLink]="['/app/internships/view', rec.id]" target="_blank" style="text-indent: 0px;">View</a>
+                <button
+                  class="apply-btn"
+                  (click)="openModal(rec)"
+                  style="margin-top: 0"
+                >
+                  Apply
+                </button>
+                <a
+                  class="view-btn-link"
+                  [routerLink]="['/app/internships/view', rec.id]"
+                  target="_blank"
+                  style="text-indent: 0px"
+                  >View</a
+                >
               </div>
             </td>
           </tr>

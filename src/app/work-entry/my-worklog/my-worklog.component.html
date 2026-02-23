@@ -29,7 +29,7 @@
     </button>
   </div>
 
- <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
+  <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
     <div class="we-card column-div" *ngFor="let rec of filteredEntries">
       <div>
         <div class="delete-div">
@@ -43,7 +43,7 @@
             Delete
           </button>
         </div>
-        <h5>Date: {{ rec.weekStart }}</h5>
+        <h5>Week start: {{ rec.weekStart | date: "dd.MM.yyyy" }}</h5>
         <p>{{ rec.activity }}</p>
       </div>
     </div>
@@ -61,8 +61,8 @@
         Next
       </button>
     </div>
-  </div> 
-<!-- 
+  </div>
+  <!-- 
   <cdk-virtual-scroll-viewport 
   itemSize="200" 
   class="viewport"

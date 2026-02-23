@@ -1,14 +1,16 @@
 <div class="new-cv-main-div">
   <div class="new-cv-card">
     <form [formGroup]="cvForm" class="column-div cv-form">
+      <label *ngIf="!imagePreview">Profile image: </label>
       <input
         *ngIf="!imagePreview"
         type="file"
-        (change)="onFileSelected($event)" class="add-file-input"
-        style="padding: 15px;"
+        (change)="onFileSelected($event)"
+        class="add-file-input"
+        style="padding: 15px"
       />
 
-      <div *ngIf="imagePreview" class="image-preview">
+      <div *ngIf="imagePreview" class="image-preview row-div">
         <img [src]="imagePreview" />
         <br />
 
@@ -17,16 +19,25 @@
         </button>
       </div>
       <div class="column-div create-cv-input-div">
-        <label for="firstName">First name: </label>
+        <div class="row-div">
+          <p class="red-star">*</p>
+          <label for="firstName">First name: </label>
+        </div>
         <input type="text" formControlName="firstName" />
       </div>
 
       <div class="column-div create-cv-input-div">
-        <label for="lastName">Last name: </label>
+        <div class="row-div">
+          <p class="red-star">*</p>
+          <label for="lastName">Last name: </label>
+        </div>
         <input type="text" formControlName="lastName" />
       </div>
       <div class="column-div create-cv-input-div">
-        <label for="contact">Contact: </label>
+        <div class="row-div">
+          <p class="red-star">*</p>
+          <label for="contact">Contact: </label>
+        </div>
         <input type="text" formControlName="contact" />
       </div>
       <div class="column-div create-cv-input-div">
@@ -34,8 +45,11 @@
         <textarea formControlName="description"></textarea>
       </div>
       <div class="column-div create-cv-input-div">
-        <label for="school">School: </label>
-        <input type="text" formControlName="school" />
+        <div class="row-div">
+          <p class="red-star">*</p>
+          <label for="school"> Education: </label>
+        </div>
+        <textarea formControlName="school"></textarea>
       </div>
       <div class="column-div create-cv-input-div">
         <label for="internships">Internships: </label>
@@ -46,7 +60,10 @@
         <textarea formControlName="experience"></textarea>
       </div>
       <div class="column-div create-cv-input-div">
-        <label for="skills">Skills: </label>
+        <div class="row-div">
+          <p class="red-star">*</p>
+          <label for="skills">Skills: </label>
+        </div>
         <input type="text" formControlName="skills" />
       </div>
       <div class="column-div create-cv-input-div">

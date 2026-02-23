@@ -28,6 +28,11 @@
   max-width: 100% !important;
 }
 
+.image-preview {
+  align-items: center;
+  gap: 10px;
+}
+
 .image-preview img {
   width: 140px;
   height: 140px;
@@ -59,6 +64,10 @@
   }
 
   .new-cv-main-div {
-  padding: 10px;
-}
+    padding: 10px;
+  }
+
+  .image-preview {
+    justify-content: center;
+  }
 }

@@ -1,29 +1,36 @@
 <div class="create-worklog-main">
   <div class="new-we-card">
-  <form [formGroup]="form1"  class="column-div we-form">
-    <div class="row-div create-we-input-div">
-      <label>Internship:</label>
-      <select formControlName="internshipId" (change)="onInternshipChange()">
-        <option  [ngValue]="">Select internship</option>
-        <option *ngFor="let i of acceptedInternships"  [ngValue]="i.id">
-          {{ i.name }}
-        </option>
-      </select>
-    </div>
-    <div class="row-div create-we-input-div">
-      <label>Week start:</label>
-      <input
-        type="date"
-        formControlName="weekStart"
-        [min]="minDate"
-        [max]="maxDate"
-      />
-    </div>
-    <div class="column-div create-we-textarea-div">
-      <label>Activity:</label>
-      <textarea formControlName="activity"></textarea>
-    </div>
-    <button type="submit" [disabled]="form1.invalid" (click)="submit()" class="button-primary submit-btn">Create Work Entry</button>
-  </form>
+    <form [formGroup]="form1" class="column-div we-form">
+      <div class="row-div create-we-input-div">
+        <label>Internship:</label>
+        <select formControlName="internshipId" (change)="onInternshipChange()">
+          <option [ngValue]="">Select internship</option>
+          <option *ngFor="let i of acceptedInternships" [ngValue]="i.id">
+            {{ i.name }}
+          </option>
+        </select>
+      </div>
+      <div class="row-div create-we-input-div">
+        <label>Week start:</label>
+        <input
+          type="date"
+          formControlName="weekStart"
+          [min]="minDate"
+          [max]="maxDate"
+        />
+      </div>
+      <div class="column-div create-we-textarea-div">
+        <label>Activity:</label>
+        <textarea formControlName="activity"></textarea>
+      </div>
+      <button
+        type="submit"
+        [disabled]="form1.invalid"
+        (click)="submit()"
+        class="button-primary submit-btn"
+      >
+        Create Work Entry
+      </button>
+    </form>
   </div>
 </div>

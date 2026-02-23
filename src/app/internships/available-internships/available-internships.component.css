@@ -1,9 +1,9 @@
 .available-main-div {
-   padding: 40px;
+  padding: 40px;
 }
 
 .internships-container {
-   width: 100%;
+  width: 100%;
 }
 
 .center {
@@ -14,7 +14,7 @@
 
 .available-header {
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   align-items: center;
   padding: 0 10px;
 }
@@ -42,13 +42,12 @@ table {
   min-width: 900px;
   border-collapse: collapse;
 }
-.filter-div{
+.filter-div {
   width: 100%;
   margin-bottom: 20px;
 }
 
-
-.filter-div select{
+.filter-div select {
   max-width: 200px;
   height: 40px;
 }
@@ -63,13 +62,13 @@ table {
     flex-direction: column;
     gap: 5px;
   }
-  .filter-div select{
-  max-width: none;
-}
+  .filter-div select {
+    max-width: none;
+  }
 
-.available-main-div {
-   padding: 20px;
-}
+  .available-main-div {
+    padding: 20px;
+  }
 }
 
 .int-pag {
