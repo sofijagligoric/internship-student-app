@@ -31,6 +31,20 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
+        if (response.role !== 'STUDENT') {
+          this.snackBar.open(
+            'Enter credentials for student account.',
+            'Close',
+            {
+              duration: 3000,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['error-snackbar'],
+            },
+          );
+          return;
+        }
+
         this.authService.setActiveUser(response);
         this.router.navigate(['/app'], { replaceUrl: true });
       },
