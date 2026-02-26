@@ -1,5 +1,5 @@
 .main-div {
-  background: #cedbed;
+  background: radial-gradient(circle at top left, #cedbed, #4b68b3);
   height: 100vh;
   display: flex;
   align-items: center;
