@@ -1,4 +1,4 @@
-<div class="view-int-main" *ngIf="internship">
+<div class="view-int-main" *ngIf="internship; else notFound">
   <div class="apply-div">
     <button class="apply-btn" (click)="openModal()" style="width: 150px">
       Apply to internship
@@ -57,3 +57,10 @@
     </div>
   </div>
 </div>
+<ng-template #notFound>
+  <div class="not-found-container">
+        <h1 class="error-code">404</h1>
+        <h2>Looks like you are lost.</h2>
+        <p>Page you were looking for is missing.</p>
+    </div>
+</ng-template>

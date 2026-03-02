@@ -17,6 +17,7 @@
 .recommendation-card p {
   margin-block-start: 2px;
   margin-block-end: 3px;
+  font-size: 15px;
 }
 
 .recommendation-card h3 {
@@ -30,6 +31,11 @@
   margin-block-end: 10px;
   color: #4b68b3;
 }
+
+/* .recommendation-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+} */
 .center {
   text-align: center;
   margin-top: 50px;

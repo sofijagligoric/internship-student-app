@@ -29,20 +29,33 @@ export class ViewInternshipComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
+  this.route.paramMap.subscribe((params) => {
+    const idParam = params.get('id');
+    const id = Number(idParam);
+    if (isNaN(id)) {
+      this.internship = null;
+      return;
+    }
 
-      this.service.getById(id).subscribe((internship) => {
+    this.service.getById(id).subscribe({
+      next: (internship) => {
         this.internship = internship;
 
-        if (internship.companyId) {
+        if (internship && internship.companyId) {
           this.companyService
             .getById(internship.companyId)
-            .subscribe((company) => (this.company = company));
+            .subscribe({
+              next: (company) => (this.company = company),
+              error: () => (this.company = null)
+            });
         }
-      });
+      },
+      error: (err) => {
+        this.internship = null;
+      }
     });
-  }
+  });
+}
 
   openModal() {
     this.modalOpen = true;
