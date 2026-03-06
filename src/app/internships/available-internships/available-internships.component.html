@@ -39,7 +39,7 @@
         <tbody *ngIf="allInternships.length > 0">
           <tr *ngFor="let rec of paginatedInternships">
             <td>{{ rec.name }}</td>
-            <td>{{ getCompanyName(rec.companyId) }}</td>
+            <td>{{ rec.companyName }}</td>
             <td>{{ rec.startDate | date: "dd.MM.yyyy" }}</td>
             <td>{{ rec.endDate | date: "dd.MM.yyyy" }}</td>
             <td>{{ rec.technologies }}</td>

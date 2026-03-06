@@ -12,14 +12,14 @@ export class InternshipService {
    constructor(private http : HttpClient) { }
 
    getAvailable() : Observable<InternshipDTO[]> {
-    return this.http.get<InternshipDTO[]>(`${this.baseUrl}/available`);
+    return this.http.get<InternshipDTO[]>(`${this.baseUrl}/available/all`);
    }
 
     getAll() : Observable<InternshipDTO[]> {
-    return this.http.get<InternshipDTO[]>(this.baseUrl);
+    return this.http.get<InternshipDTO[]>(`${this.baseUrl}/all`);
    }
 
   getById(id: number): Observable<InternshipDTO> {
-      return this.http.get<InternshipDTO>(`${this.baseUrl}/${id}`);
+      return this.http.get<InternshipDTO>(`${this.baseUrl}/view/${id}`);
     }
 }

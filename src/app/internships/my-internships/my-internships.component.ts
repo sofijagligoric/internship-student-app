@@ -14,7 +14,6 @@ import { Application } from '../../models/Application';
 })
 export class MyInternshipsComponent implements OnInit {
   constructor(
-    private internshipService: InternshipService,
     private applicationService: ApplicationService,
     private loginService: LoginService,
   ) {}
@@ -22,7 +21,6 @@ export class MyInternshipsComponent implements OnInit {
   searchTerm: string = '';
   selectedStatus: string | null = null;
   filteredApplications: Application[] = [];
-  internships: InternshipDTO[] = [];
   applications: Application[] = [];
   currentPage: number = 1;
   pageSize: number = 10;
@@ -36,23 +34,11 @@ export class MyInternshipsComponent implements OnInit {
       next: (response) => {
         this.applications = response;
         this.filteredApplications = response;
-
-        this.internshipService.getAll().subscribe({
-          next: (res) => {
-            const acceptedIds = this.applications.map((a) => a.internshipId);
-            this.internships = res.filter((i) => acceptedIds.includes(i.id!));
-          },
-          error: () => console.log('Error loading internships.'),
-        });
       },
       error: () => console.log('Error loading applications.'),
     });
   }
 
-  getInternshipName(internshipid: number): string {
-    const internship = this.internships.find((c) => c.id === internshipid);
-    return internship ? internship.name : 'Unknown';
-  }
 
   get paginatedApplications(): Application[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -80,11 +66,8 @@ export class MyInternshipsComponent implements OnInit {
         ? app.status.toLowerCase() === this.selectedStatus.toLowerCase()
         : true;
 
-      const internship = this.internships.find(
-        (i) => i.id === app.internshipId,
-      );
       const nameMatch = this.searchTerm
-        ? internship?.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        ? app.internshipName.toLowerCase().includes(this.searchTerm.toLowerCase())
         : true;
 
       return statusMatch && nameMatch;

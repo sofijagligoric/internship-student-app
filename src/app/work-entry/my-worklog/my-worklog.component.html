@@ -5,20 +5,20 @@
     <div class="search-box">
       <input
         type="text"
-        placeholder="Search by entry date..."
+        placeholder="Search by week start..."
         [(ngModel)]="searchTerm"
         (input)="applyFilter()"
       />
     </div>
   </div>
   <div class="header-actions">
-    <select [(ngModel)]="selectedInternshipId" (change)="applyFilter()">
-      <option [ngValue]="null">All internships</option>
-
-      <option *ngFor="let internship of internships" [ngValue]="internship.id">
-        {{ internship.name }}
-      </option>
-    </select>
+   <select [(ngModel)]="selectedInternshipId" (change)="applyFilter()">
+  <option [ngValue]="null">All internships</option>
+  
+  <option *ngFor="let app of applications" [ngValue]="app.internshipId">
+    {{ app.internshipName }}
+  </option>
+</select>
     <button
       class="button-primary"
       routerLink="/app/work-entry/create-worklog"

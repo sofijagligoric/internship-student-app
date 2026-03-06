@@ -17,7 +17,6 @@ export class MyWorklogComponent implements OnInit {
   constructor(
     private workentryService: WorkentryService,
     private loginService: LoginService,
-    private internshipService: InternshipService,
     private applicationService: ApplicationService,
     private snackBar: MatSnackBar,
   ) {}
@@ -26,42 +25,30 @@ export class MyWorklogComponent implements OnInit {
   selectedWorentry: Workentry | null = null;
   searchTerm: string = '';
   filteredEntries: Workentry[] = [];
-  internships: InternshipDTO[] = [];
   applications: Application[] = [];
   currentPage: number = 1;
   pageSize: number = 10;
   selectedInternshipId: number | null = null;
 
   ngOnInit(): void {
-    let user = this.loginService.getActiveUser();
-    if (!user) return;
-    this.workentryService.getByStudent(user.userId).subscribe({
+  let user = this.loginService.getActiveUser();
+  if (!user) return;
+  this.workentryService.getByStudent(user.userId).subscribe({
+    next: (response) => {
+      this.workEntries = response;
+      this.filteredEntries = response;
+    },
+    error: () => console.log('Error loading work entries.')
+  });
+  this.applicationService
+    .getByStudentAndStatus(user.userId, 'ACCEPTED')
+    .subscribe({
       next: (response) => {
-        this.workEntries = response;
-        this.filteredEntries = response;
+        this.applications = response;
       },
-      error: () => {
-        console.log('Erorr loading work entries.');
-      },
+      error: () => console.log('Error loading applications.'),
     });
-
-    this.applicationService
-      .getByStudentAndStatus(user.userId, 'ACCEPTED')
-      .subscribe({
-        next: (response) => {
-          this.applications = response;
-
-          this.internshipService.getAll().subscribe({
-            next: (res) => {
-              const acceptedIds = this.applications.map((a) => a.internshipId);
-              this.internships = res.filter((i) => acceptedIds.includes(i.id!));
-            },
-            error: () => console.log('Error loading internships.'),
-          });
-        },
-        error: () => console.log('Error loading applications.'),
-      });
-  }
+}
 
   applyFilter() {
     this.filteredEntries = this.workEntries.filter((w) => {
@@ -118,10 +105,10 @@ export class MyWorklogComponent implements OnInit {
     });
   }
 
-  getInternshipName(intId: number): string {
-    const internship = this.internships.find((c) => c.id === intId);
-    return internship ? internship.name : 'Unknown';
-  }
+ getInternshipName(intId: number): string {
+  const app = this.applications.find((a) => a.internshipId === intId);
+  return app ? app.internshipName : 'Unknown';
+}
 
   get paginatedWorkentries(): Workentry[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;

@@ -48,19 +48,6 @@ export class AvailableInternshipsComponent implements OnInit {
     });
   }
 
-  getCompanyName(companyId: number): string {
-    const company = this.companies.find((c) => c.id === companyId);
-    return company ? company.name : 'Unknown';
-  }
-  /* 
-  applyFilter() {
-    this.filteredInternships = this.allInternships.filter((r) =>
-      r.technologies?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
-     r.skills?.toLowerCase().includes(this.searchTerm.toLowerCase()),
-    );
-    this.currentPage = 1;
-  } */
-
   applyFilter() {
     this.filteredInternships = this.allInternships.filter((r) => {
       const matchesInternship =

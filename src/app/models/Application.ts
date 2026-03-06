@@ -4,4 +4,6 @@ export interface Application {
   date: string;
   internshipId: number;
   studentId: number;
+  studentName: string;
+  internshipName: string;
 }

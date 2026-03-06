@@ -16,13 +16,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ViewInternshipComponent implements OnInit {
   internshipId!: number;
   public internship: InternshipDTO | null = null;
-  public company: Company | null = null;
   public modalOpen = false;
 
   constructor(
     private route: ActivatedRoute,
     private service: InternshipService,
-    private companyService: CompanyService,
     private applicationService: ApplicationService,
     private loginService: LoginService,
     private snackBar: MatSnackBar,
@@ -40,15 +38,6 @@ export class ViewInternshipComponent implements OnInit {
     this.service.getById(id).subscribe({
       next: (internship) => {
         this.internship = internship;
-
-        if (internship && internship.companyId) {
-          this.companyService
-            .getById(internship.companyId)
-            .subscribe({
-              next: (company) => (this.company = company),
-              error: () => (this.company = null)
-            });
-        }
       },
       error: (err) => {
         this.internship = null;
