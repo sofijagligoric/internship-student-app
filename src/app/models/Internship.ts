@@ -3,6 +3,7 @@ export interface InternshipDTO {
   name: string;
   startDate: string;  
   endDate: string;   
+  available: boolean;
   about?: string;
   technologies?: string;
   skills?: string;

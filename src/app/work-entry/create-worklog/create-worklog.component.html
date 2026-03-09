@@ -4,7 +4,7 @@
       <div class="row-div create-we-input-div">
         <label>Internship:</label>
         <select formControlName="internshipId" (change)="onInternshipChange()">
-          <option [ngValue]="">Select internship</option>
+          <option [ngValue]="null">Select internship</option>
           <option *ngFor="let i of acceptedInternships" [ngValue]="i.id">
             {{ i.name }}
           </option>

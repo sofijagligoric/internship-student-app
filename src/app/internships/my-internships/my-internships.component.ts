@@ -34,8 +34,7 @@ export class MyInternshipsComponent implements OnInit {
       next: (response) => {
         this.applications = response;
         this.filteredApplications = response;
-      },
-      error: () => console.log('Error loading applications.'),
+      }
     });
   }
 

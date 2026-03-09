@@ -35,10 +35,7 @@ export class AvailableInternshipsComponent implements OnInit {
       next: (response) => {
         this.allInternships = response;
         this.filteredInternships = response;
-      },
-      error: () => {
-        console.log('Error loading available internships.');
-      },
+      }
     });
 
     this.companyService.getAll().subscribe({

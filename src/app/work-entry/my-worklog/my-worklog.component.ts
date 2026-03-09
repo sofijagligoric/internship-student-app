@@ -37,16 +37,14 @@ export class MyWorklogComponent implements OnInit {
     next: (response) => {
       this.workEntries = response;
       this.filteredEntries = response;
-    },
-    error: () => console.log('Error loading work entries.')
+    }
   });
   this.applicationService
     .getByStudentAndStatus(user.userId, 'ACCEPTED')
     .subscribe({
       next: (response) => {
         this.applications = response;
-      },
-      error: () => console.log('Error loading applications.'),
+      }
     });
 }
 

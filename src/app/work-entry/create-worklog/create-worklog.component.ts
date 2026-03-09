@@ -52,10 +52,7 @@ export class CreateWorklogComponent implements OnInit {
       .subscribe({
         next: (internships) => {
           this.acceptedInternships = this.getAcceptedInternships(internships);
-        },
-        error: () => {
-          console.log('Error loading data.');
-        },
+        }
       });
   }
 
@@ -64,15 +61,20 @@ export class CreateWorklogComponent implements OnInit {
     return internships.filter((i) => acceptedIds.includes(i.id));
   }
 
-  onInternshipChange() {
-    const selectedId = this.form1.get('internshipId')?.value;
+ onInternshipChange() {
+  const selectedId = this.form1.get('internshipId')?.value;
+  if (selectedId) {
     const selected = this.acceptedInternships.find((i) => i.id === selectedId);
     if (selected) {
       this.minDate = selected.startDate;
       this.maxDate = selected.endDate;
       this.form1.get('weekStart')?.reset();
     }
+  } else {
+    this.minDate = '';
+    this.maxDate = '';
   }
+}
 
   submit() {
     if (this.form1.invalid) return;
