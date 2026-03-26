@@ -30,7 +30,7 @@
   </div>
 
   <div *ngIf="filteredEntries.length > 0" class="we-cards-container">
-    <div class="we-card column-div" *ngFor="let rec of filteredEntries">
+    <div class="we-card column-div" *ngFor="let rec of paginatedWorkentries">
       <div>
         <div class="delete-div">
           <h3>{{ getInternshipName(rec.internshipId) }}</h3>
