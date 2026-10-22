@@ -10,7 +10,7 @@ It connects students with companies offering internships and provides tools for 
 
 Student Authentication: Provides login functionality for registered student accounts.
 
-CV Management: Allows students to create and maintain their CVs, including personal information, education, additional training, work experience, skills, and interests.
+CV Management: Allows students to create and maintain their CVs, including personal information, image upload, education, additional training, work experience, skills, and interests. 
 
 Internship Search: Enables students to browse, search, and filter available internships by company and required technologies.
 
@@ -44,7 +44,7 @@ Install the required dependencies.
 
 Configure the backend API URL.
 
-Start the development server using the commands appropriate for the selected frontend framework.
+Start the development server: ng serve --open .
 
 ## Project Context
 
